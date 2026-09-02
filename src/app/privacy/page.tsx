@@ -1,0 +1,1 @@
+export default function Privacy(){ return <div className="container-electro py-8 max-w-[800px]"><h1 className="text-xl font-black">Privacy Policy</h1><p className="text-sm mt-3 text-slate-700">We respect your privacy. Placeholder policy – have legal adviser review before launch.</p></div> }

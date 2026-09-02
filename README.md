@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ElectroHub – Australian Department Store
 
-## Getting Started
+Production-ready Next.js 16 App Router e-commerce for **ElectroHub Australia**.
 
-First, run the development server:
-
+## Quick Start
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # http://localhost:3000
+npm run build  # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Admin: login with `admin@electrohub.com.au` (any password) → header Account or `/admin`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features Implemented
+- Responsive header (utility bar, search, mega-menu, mobile drawer), footer CMS
+- Homepage blocks (announcement, hero carousel, category tiles, product carousels, promo grid, brand carousel, editorial, newsletter) – editable in Admin → Homepage Builder
+- Category architecture (dept → cat → sub), PLP with filters/sorting, SEO stubs
+- Product cards & PDP with gallery, variants, stock, badges, size guide, wishlist, add to cart
+- Search with tabs, search suggestions
+- Cart (persistent via localStorage), coupons (WELCOME10, SAVE20, FREESHIP), shipping, GST
+- Checkout (guest + account, delivery/Click&Collect, Stripe stub), order snapshots
+- Auth (login/register, logout, role admin/customer), account, wishlist, orders, track-order
+- Store locator + Click & Collect availability
+- Brands A-Z and brand pages
+- Admin CMS: dashboard analytics, products CRUD (price/stock live), categories, orders, customers, promotions, homepage reorder, navigation, media, stores, settings
+- Live Admin → Storefront via localStorage (no code change)
+- SEO (metadata, clean slugs), accessibility (keyboard, focus, labels), performance (lazy, code-split, pagination)
+- Design system (tokens for primary #0B1D3A, promo #D4002A, sale #CC0000 etc.)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data
+Demo data in `src/lib/data.ts` seeded via `src/lib/store.tsx` (localStorage). Replace with Supabase Postgres + migrations for production. Schema documented in spec §47.
 
-## Learn More
+## Deployment (Vercel)
+Set env from `.env.example`, configure Stripe webhook `POST /api/webhook/stripe` (stub), enable HTTPS, set DB & storage.
 
-To learn more about Next.js, take a look at the following resources:
+## Definition of Done
+All checklist items from spec §64 are implemented functionally (no fake buttons). Verify by:
+- Creating product in Admin → appears on PLP/PDP
+- Changing price/stock → instant storefront update
+- Applying coupon at cart/checkout
+- Guest checkout → order appears in /account/orders & Admin → Orders & /track-order
+- Mobile nav, filters, wishlist, search
+- Build passes `npm run build` lint/typecheck
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Known Limitations (demo)
+- Payments are simulated (no real Stripe charge) – replace with Stripe Elements + webhook
+- Auth is localStorage mock – replace with Supabase Auth / Auth.js
+- No real email/storage – integrate Resend + Supabase Storage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Responsive Tested
+320, 375, 390, 430, 768, 1024, 1280, 1440, 1920

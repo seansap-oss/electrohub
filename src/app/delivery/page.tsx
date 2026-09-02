@@ -1,0 +1,1 @@
+export default function Delivery(){ return <div className="container-electro py-8 max-w-[800px]"><h1 className="text-xl font-black">Delivery & Click & Collect</h1><p className="text-sm mt-3 text-slate-700">Standard delivery $9.95, FREE over $99. Express available. Click & Collect ready in 2 hours where stock available. Replace with accurate policy before launch.</p></div> }

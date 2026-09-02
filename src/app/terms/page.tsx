@@ -1,0 +1,1 @@
+export default function Terms(){ return <div className="container-electro py-8 max-w-[800px]"><h1 className="text-xl font-black">Terms & Conditions</h1><p className="text-sm mt-3 text-slate-700">Placeholder terms. Require legal review before launch.</p></div> }

@@ -1,0 +1,1 @@
+export default function Returns(){ return <div className="container-electro py-8 max-w-[800px]"><h1 className="text-xl font-black">Returns</h1><p className="text-sm mt-3 text-slate-700">30 day change of mind returns. Faulty goods covered under Australian Consumer Law. Placeholder – requires legal review.</p></div> }
